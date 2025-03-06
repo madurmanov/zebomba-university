@@ -1,0 +1,285 @@
+.Button {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.Game-Map {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.Game-Canvas {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+.Game-Navigation {
+  position: absolute;
+  z-index: 3;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  display: flex;
+  user-select: none;
+}
+
+.Game-Slider {
+  display: flex;
+  justify-content: center;
+  width: 536px;
+  height: 63px;
+  margin-left: 4px;
+  background: no-repeat url("../images/friends.png");
+}
+.Game-Slider-List {
+  display: flex;
+  align-items: center;
+  width: 470px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.Game-Slider-List-Item {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 50px;
+  height: 51px;
+  margin: 0 5px;
+  background: no-repeat url("../images/slider-item.png");
+}
+.Game-Slider-List-Item:first-child {
+  margin-left: 0;
+  transition: margin 0.4s;
+}
+.Game-Slider-List-Item:last-child {
+  margin-right: 0;
+}
+.Game-Slider-List-Item_withIcon::before,
+.Game-Slider-List-Item_withPlus::after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+.Game-Slider-List-Item_withIcon::before {
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 38px;
+  background: no-repeat url("../images/slider-item-icon.png");
+}
+.Game-Slider-List-Item_withPlus::after {
+  top: -3px;
+  right: -6px;
+  width: 23px;
+  height: 22px;
+  background: no-repeat url("../images/slider-item-plus.png");
+}
+.Game-Slider-Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 100%;
+}
+.Game-Slider-Button_disabled {
+  cursor: default;
+}
+.Game-Slider-Button-Icon {
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(33, 30, 31, 0.75));
+  filter: drop-shadow(1px 1px 1px rgba(33, 30, 31, 0.75));
+}
+.Game-Slider-Button:hover:not(.Game-Slider-Button_disabled) .Game-Slider-Button-Icon,
+.Game-Slider-Button:focus:not(.Game-Slider-Button_disabled) .Game-Slider-Button-Icon {
+  -webkit-filter: drop-shadow(2px 2px 1px rgba(33, 30, 31, 0.75));
+  filter: drop-shadow(2px 2px 1px rgba(33, 30, 31, 0.75));
+}
+.Game-Slider-Button-Icon_prev {
+  border-width: 13.5px 14px 13.5px 0;
+  border-color: transparent #fff transparent transparent;
+}
+.Game-Slider-Button-Icon_next {
+  border-width: 13.5px 0 13.5px 14px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.Game-Button {
+  font-size: 0;
+  height: 60px;
+  border-radius: 14px;
+  box-shadow: 1px 2px 1px rgba(33, 30, 31, 0.75);
+}
+.Game-Button:hover,
+.Game-Button:focus {
+  box-shadow: 2px 3px 1px rgba(33, 30, 31, 0.75);
+}
+.Game-Button_chat {
+  width: 65px;
+  margin-left: 3px;
+  background: no-repeat url("../images/button-chat.png");
+}
+.Game-Button_move {
+  width: 202px;
+  height: 63px;
+  border-radius: 20px;
+  margin-left: 8px;
+  background: no-repeat url("../images/button-move.png");
+}
+.Game-Button_mail {
+  width: 64px;
+  margin-left: 9px;
+  background: no-repeat url("../images/button-mail.png");
+}
+.Game-Button_rating {
+  width: 65px;
+  margin-left: 6px;
+  background: no-repeat url("../images/button-rating.png");
+}
+
+.Game-Rating {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.Game-Rating_visible {
+  opacity: 1;
+  visibility: visible;
+}
+.Game-Rating::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.Game-Rating-Container {
+  position: relative;
+  top: -100%;
+  z-index: 2;
+  width: 521px;
+  height: 455px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  box-sizing: border-box;
+  border: 5px solid #8c5f2f;
+  border-radius: 20px;
+  background: #ce9e6b;
+  background: radial-gradient(circle, #ce9e6b 0%, #9e6b35 100%);
+  transition: top 0.4s;
+}
+.Game-Rating-Container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 264px;
+  height: 33px;
+  transform: translateX(-50%);
+  background: no-repeat url("../images/rating-title.png");
+}
+.Game-Rating_visible .Game-Rating-Container {
+  top: 0;
+}
+.Game-Rating-Close {
+  position: absolute;
+  top: 14px;
+  right: 17px;
+  width: 26px;
+  height: 26px;
+  font-size: 0;
+  background: no-repeat url("../images/rating-close.png");
+}
+.Game-Rating-Viewport {
+  position: relative;
+  flex-grow: 1;
+  height: 324px;
+  margin: 0 24px 32px 24px;
+  border-radius: 20px;
+  background-color: #8c5a31;
+}
+.Game-Rating-List {
+  padding: 0;
+  margin: 67px 30px 32px;
+  list-style: none;
+  height: 226px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 14px;
+}
+.Game-Rating-List-Item {
+  display: flex;
+  align-items: center;
+  width: 403px;
+  height: 27px;
+  background: no-repeat url("../images/rating-item.png");
+  color: #fff;
+}
+.Game-Rating-List-Item_friend {
+  font-weight: 700;
+}
+.Game-Rating-List-Item:not(:last-child) {
+  margin-bottom: 6px;
+}
+.Game-Rating-List-Item:first-child {
+  position: absolute;
+  top: 32px;
+  left: 30px;
+  height: 29px;
+  background: no-repeat url("../images/rating-caption.png");
+}
+.Game-Rating-List-Item-Inner {
+  display: block;
+}
+.Game-Rating-List-Item-Inner_place {
+  width: 66px;
+  padding-top: 1px;
+  text-align: center;
+}
+.Game-Rating-List-Item-Inner_image {
+  width: 30px;
+  height: 29px;
+}
+.Game-Rating-List-Item-Inner_image:not(.Game-Rating-List-Item-Inner_imageStub) {
+  background: no-repeat url("../images/rating-image.png");
+}
+.Game-Rating-List-Item-Inner_name {
+  width: 230px;
+  padding-top: 1px;
+  padding-left: 5px;
+}
+.Game-Rating-List-Item-Inner_points {
+  width: 40px;
+  padding-top: 1px;
+  padding-left: 5px;
+  text-align: center;
+}

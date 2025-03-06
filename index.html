@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon-512.png" />
+    <link rel="icon" sizes="16x16" href="./favicon-16.png" />
+    <link rel="icon" sizes="32x32" href="./favicon-32.png" />
+    <link rel="icon" sizes="48x48" href="./favicon-48.png" />
+    <link rel="icon" sizes="64x64" href="./favicon-64.png" />
+    <link rel="icon" sizes="128x128" href="./favicon-128.png" />
+    <link rel="icon" sizes="192x192" href="./favicon-192.png" />
+    <link rel="icon" sizes="256x256" href="./favicon-256.png" />
+    <link rel="icon" href="./favicon-48.ico" type="icon/x-icon" />
+    <link rel="icon" href="./favicon-48.svg" type="icon/svg+xml" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Zebomba University</title>
+    <meta name="keywords" content="Zebomba University" />
+    <meta name="description" content="Zebomba University Game" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preload" href="./js/main.js" as="script" />
+    <link rel="manifest" href="./manifest.json" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background-color: #fff;
+        color: #000;
+        font: 400 16px/1 "Helvetica", sans-serif;
+      }
+      .App {
+        min-width: 980px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .Game {
+        position: relative;
+        width: 980px;
+        height: 630px;
+        overflow: hidden;
+        background-color: #149585;
+        background: linear-gradient(#149585, #006b60);
+      }
+      .Game-Preloader {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 1s, visibility 1s;
+      }
+      .Game_loaded .Game-Preloader {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .Game-Container {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s, visibility 1s;
+      }
+      .Game_loaded .Game-Container {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="App">
+      <div class="Game">
+        <svg class="Game-Preloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="60" height="60">
+          <circle fill="#9E4516" stroke="#9E4516" stroke-width="2" r="15" cx="40" cy="100">
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              dur="2"
+              values="1;0;1;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-.4"
+            ></animate>
+          </circle>
+          <circle fill="#9E4516" stroke="#9E4516" stroke-width="2" r="15" cx="100" cy="100">
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              dur="2"
+              values="1;0;1;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-.2"
+            ></animate>
+          </circle>
+          <circle fill="#9E4516" stroke="#9E4516" stroke-width="2" r="15" cx="160" cy="100">
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              dur="2"
+              values="1;0;1;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="0"
+            ></animate>
+          </circle>
+        </svg>
+
+        <div class="Game-Container">
+          <img class="Game-Map" src="./images/map.png" alt="Game Map" />
+          <canvas class="Game-Canvas" width="980" height="630"></canvas>
+
+          <div class="Game-Navigation">
+            <div class="Game-Slider">
+              <button class="Game-Slider-Button Game-Slider-Button_prev Button">
+                <span class="Game-Slider-Button-Icon Game-Slider-Button-Icon_prev"></span>
+              </button>
+              <ul class="Game-Slider-List">
+                <li class="Game-Slider-List-Item Game-Slider-List-Item_withIcon Game-Slider-List-Item_withPlus"></li>
+                <li class="Game-Slider-List-Item Game-Slider-List-Item_withIcon"></li>
+                <li class="Game-Slider-List-Item Game-Slider-List-Item_withIcon"></li>
+                <li class="Game-Slider-List-Item Game-Slider-List-Item_withIcon"></li>
+                <li class="Game-Slider-List-Item Game-Slider-List-Item_withIcon"></li>
+                <li class="Game-Slider-List-Item Game-Slider-List-Item_withIcon"></li>
+                <li class="Game-Slider-List-Item"></li>
+                <li class="Game-Slider-List-Item"></li>
+                <li class="Game-Slider-List-Item"></li>
+                <li class="Game-Slider-List-Item"></li>
+              </ul>
+              <button class="Game-Slider-Button Game-Slider-Button_next Button">
+                <span class="Game-Slider-Button-Icon Game-Slider-Button-Icon_next"></span>
+              </button>
+            </div>
+            <button class="Game-Button Game-Button_chat Button">Чат</button>
+            <button class="Game-Button Game-Button_move Button">В универ</button>
+            <button class="Game-Button Game-Button_mail Button">Почта</button>
+            <button class="Game-Button Game-Button_rating Button">Рейтинг</button>
+          </div>
+        </div>
+
+        <div class="Game-Rating">
+          <div class="Game-Rating-Container">
+            <button class="Game-Rating-Close Button">Закрыть</button>
+            <div class="Game-Rating-Viewport">
+              <ul class="Game-Rating-List">
+                <li class="Game-Rating-List-Item">
+                  <span class="Game-Rating-List-Item-Inner Game-Rating-List-Item-Inner_place">Место</span>
+                  <span class="Game-Rating-List-Item-Inner Game-Rating-List-Item-Inner_image Game-Rating-List-Item-Inner_imageStub"></span>
+                  <span class="Game-Rating-List-Item-Inner Game-Rating-List-Item-Inner_name">Имя Фамилия</span>
+                  <span class="Game-Rating-List-Item-Inner Game-Rating-List-Item-Inner_points">Опыт</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/main.js" defer></script>
+  </body>
+</html>
