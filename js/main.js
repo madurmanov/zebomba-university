@@ -311,6 +311,7 @@
           const itemPlace = document.createElement("span");
           itemPlace.classList.add(GameRating.CLASSES_ITEM_INNER, GameRating.CLASSES_ITEM_INNER_PLACE);
           itemPlace.innerHTML = user.id;
+          itemPlace.title = user.id;
           item.appendChild(itemPlace);
 
           const itemImage = document.createElement("span");
@@ -319,12 +320,15 @@
 
           const itemName = document.createElement("span");
           itemName.classList.add(GameRating.CLASSES_ITEM_INNER, GameRating.CLASSES_ITEM_INNER_NAME);
-          itemName.innerHTML = `${user.name} ${user.lastName}`;
+          const userName = `${user.name} ${user.lastName}`;
+          itemName.innerHTML = userName;
+          itemName.title = userName;
           item.appendChild(itemName);
 
           const itemPoints = document.createElement("span");
           itemPoints.classList.add(GameRating.CLASSES_ITEM_INNER, GameRating.CLASSES_ITEM_INNER_POINTS);
           itemPoints.innerHTML = user.points;
+          itemPoints.title = user.points;
           item.appendChild(itemPoints);
 
           this.list.appendChild(item);

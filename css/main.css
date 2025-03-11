@@ -259,10 +259,10 @@
 }
 .Game-Rating-List-Item-Inner {
   display: block;
+  box-sizing: border-box;
 }
 .Game-Rating-List-Item-Inner_place {
   width: 66px;
-  padding-top: 1px;
   text-align: center;
 }
 .Game-Rating-List-Item-Inner_image {
@@ -273,13 +273,17 @@
   background: no-repeat url("../images/rating-image.png");
 }
 .Game-Rating-List-Item-Inner_name {
-  width: 230px;
-  padding-top: 1px;
-  padding-left: 5px;
+  width: 235px;
 }
 .Game-Rating-List-Item-Inner_points {
-  width: 40px;
-  padding-top: 1px;
-  padding-left: 5px;
+  width: 50px;
   text-align: center;
+}
+.Game-Rating-List-Item-Inner_place,
+.Game-Rating-List-Item-Inner_name,
+.Game-Rating-List-Item-Inner_points {
+  padding: 1px 5px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
